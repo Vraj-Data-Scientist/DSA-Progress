@@ -11,7 +11,7 @@ class Solution:
                 max_sum = max(max_sum, curr_sum)
         return max_sum
 
-    def maxSubArray_optimal(self, nums: List[int]) -> (int, int, int):
+    def maxSubArray_optimal(self, nums: List[int]) -> (int, int, int, List[int]):
         n = len(nums)
         max_sum = float('-inf')
         curr_sum = 0
@@ -28,7 +28,7 @@ class Solution:
                 ans_end = i
             if (curr_sum < 0):
                 curr_sum = 0
-        return ans_start, ans_end, max_sum
+        return ans_start, ans_end, max_sum, nums[ans_start:ans_end+1]
 
 print(Solution().maxSubArray_brute([-2,1,-3,4,-1,2,1,-5,4]))
 print(Solution().maxSubArray_brute([5,4,-1,7,8]))
