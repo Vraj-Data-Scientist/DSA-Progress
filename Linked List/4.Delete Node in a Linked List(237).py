@@ -81,10 +81,19 @@ class Solution:
             temp = temp.next
         return head
 
+    def deleteNode_without_head(self, node):
+        node.data = node.next.data
+        node.next = node.next.next
+
+print(Solution().traversal(node1))
+Solution().deleteNode_without_head(node4)
+print(Solution().traversal(node1))
+Solution().kth_position(node1, 3)
+print(Solution().traversal(node1))
+Solution().del_val(node2, 25)
+print(Solution().traversal(node1))
+
 print(Solution().traversal(Solution().delete_first(node1)))
 print(Solution().traversal(Solution().delete_last(node2)))
-print(Solution().traversal(Solution().kth_position(node2, 3)))
-print(Solution().traversal(Solution().del_val(node2, 10)))
-print(Solution().traversal(Solution().del_val(node2, 25)))
 
 
