@@ -42,12 +42,23 @@ class Solution:
             temp = front
         return prev
 
+    def reverseList_optimal_recursive(self, head: [ListNode]) -> [ListNode]:
+        if (head == None or head.next == None):
+            return head
+        new_head = Solution().reverseList_optimal_recursive(head.next)
+        front = head.next
+        front.next = head
+        head.next = None
+        return new_head
 
 head1 = Solution().arr_to_LL([1,2,3,4,5])
 head2 = Solution().reverseList_brute(head1)
 print(Solution().traversal(head2))
 head1 = Solution().arr_to_LL([1,2,3,4,5])
 head2 = Solution().reverseList_optimal_iterative(head1)
+print(Solution().traversal(head2))
+head1 = Solution().arr_to_LL([1,2,3,4,5])
+head2 = Solution().reverseList_optimal_recursive(head1)
 print(Solution().traversal(head2))
 
 
