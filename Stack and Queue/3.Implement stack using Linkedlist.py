@@ -17,7 +17,7 @@ class stack:
             return
         temp = self.top
         self.top = self.top.next
-        ele = temp
+        ele = temp.val
         temp = None
         self.size = self.size - 1
         return ele
@@ -40,5 +40,6 @@ st.pop()
 st.pop()
 print(st.peek())
 print(st.size_stack())
+
 
 
