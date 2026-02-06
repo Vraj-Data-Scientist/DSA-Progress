@@ -19,3 +19,14 @@ class MyQueue:
         
     def empty(self) -> bool:
         return not self.input and not self.output
+
+q = MyQueue()
+q.push(1)
+q.push(2)
+q.push(3)
+q.push(4)
+print(q.push(5))
+print(q.pop())
+print(q.peek())
+q.push(5)
+print(q.peek())
