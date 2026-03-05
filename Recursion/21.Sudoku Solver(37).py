@@ -30,7 +30,7 @@ class Solution:
                             board[i][j] = c
                             if (self.solveSudoku_brute(board) == True):
                                 return True
-                            # don't come here if already true---it avoids
+                            # won't come here if already true---it avoids
                             board[i][j] = "."
                     return False
         return True
@@ -49,3 +49,4 @@ board = [["5","3",".",".","7",".",".",".","."],
          [".",".",".","4","1","9",".",".","5"],
          [".",".",".",".","8",".",".","7","9"]]
 print(Solution().ans(board))
+
