@@ -7,25 +7,23 @@ class Solution:
                 result.append(ds)
             return
 
-        for end in range(start, len(num)+1):
-            if end > start and num[start] == "0":
+        for end in range(start+1, len(num)+1):
+            if end > start+1 and num[start] == "0":
                 return
-            curr_num = num[start:end+1]
+            curr_num = num[start:end]
             curr_num_val = int(curr_num)
             if start == 0:
-                self.solve(num, target, end+1, curr_num_val, curr_num_val, curr_num, result)
+                self.solve(num, target, end, curr_num_val, curr_num_val, curr_num, result)
             else:
-                self.solve(num, target, end+1, current_value + curr_num_val, curr_num_val, ds + "+" + curr_num, result)
-                self.solve(num, target, end+1, current_value - curr_num_val, -curr_num_val, ds + "-" + curr_num, result)
-                self.solve(num, target, end+1, current_value - last_operand + last_operand * curr_num_val , last_operand * curr_num_val, ds + "*" + curr_num, result)
+                self.solve(num, target, end, current_value + curr_num_val, curr_num_val, ds + "+" + curr_num, result)
+                self.solve(num, target, end, current_value - curr_num_val, -curr_num_val, ds + "-" + curr_num, result)
+                self.solve(num, target, end, current_value - last_operand + (last_operand * curr_num_val) , last_operand * curr_num_val, ds + "*" + curr_num, result)
 
     def addOperators(self, num: str, target: int) -> List[str]:
         result = []
         ds = ""
         self.solve(num, target, 0, 0, 0, ds, result)
         return result
-
-
 
 print(Solution().addOperators("123", 6))
 print(Solution().addOperators("121", 13))
