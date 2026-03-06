@@ -26,13 +26,6 @@ class Solution:
         return result
 
 
-# Testing the implementation
-if __name__ == "__main__":
-    num = "123"
-    target = 6
-    sol = Solution()
 
-    result = sol.addOperators(num, target)
-
-    for expr in result:
-        print(expr, end=" ")  # Output each valid expression
+print(Solution().addOperators("123", 6))
+print(Solution().addOperators("121", 13))
