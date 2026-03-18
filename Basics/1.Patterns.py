@@ -153,6 +153,15 @@ class Solution:
                 print(" ", end=" ")
             print()
 
+    def pattern19(self, n):
+        for i in range(0, n):
+            ch = ord('A')
+            for j in range(ch+n-1-i, ch+n):
+                print(chr(j), end=" ")
+            print()
+
+
+
 Solution().pattern1(3)
 Solution().pattern2(5)
 Solution().pattern3(5)
@@ -171,3 +180,4 @@ Solution().pattern15(5)
 Solution().pattern16(5)
 Solution().pattern17(5)
 Solution().pattern18(5)
+Solution().pattern19(5)
