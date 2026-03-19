@@ -160,6 +160,64 @@ class Solution:
                 print(chr(j), end=" ")
             print()
 
+    def pattern20(self, n):
+        for i in range(0, n):
+            for j in range(0, n-i):
+                print("*", end=" ")
+            for j in range(0, 2*i):
+                print(" ", end=" ")
+            for j in range(0, n-i):
+                print("*", end=" ")
+            print()
+        space = 2 * n - 2
+        for i in range(0, n):
+            for j in range(0, i+1):
+                print("*", end=" ")
+            for j in range(0, space):
+                print(" ", end=" ")
+            space -= 2
+            for j in range(0, i+1):
+                print("*", end=" ")
+            print()
+
+    def pattern21(self, n):
+        space = 2*n - 2
+        for i in range(1, 2*n):
+            if (i <= n):
+                stars = i
+            else:
+                stars = 2*n - i
+            for j in range(1, stars+1):
+                print("*", end=" ")
+            for j in range(1, space+1):
+                print(" ", end=" ")
+            if (i < n):
+                space -= 2
+            else:
+                space += 2
+            for j in range(0, stars):
+                print("*", end=" ")
+            print()
+
+    def pattern22(self, n):
+        for i in range(0, n):
+            for j in range(0, n):
+                if (i == 0 or j == 0 or i == n-1 or j == n-1):
+                    print("*", end=" ")
+                else:
+                    print(" ", end=" ")
+            print()
+
+    def pattern23(self, n):
+        for i in range(0, 2*n-1):
+            for j in range(0, 2*n-1):
+                left = j
+                top = i
+                right = 2*n - 2 - j
+                bottom = 2*n - 2 - i
+                print(n - min(left, right, top, bottom), end=" ")
+            print()
+
 
 
 Solution().pattern1(3)
@@ -181,3 +239,7 @@ Solution().pattern16(5)
 Solution().pattern17(5)
 Solution().pattern18(5)
 Solution().pattern19(5)
+Solution().pattern20(5)
+Solution().pattern21(5)
+Solution().pattern22(6)
+Solution().pattern23(4)
