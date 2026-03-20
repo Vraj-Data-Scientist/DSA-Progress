@@ -46,6 +46,14 @@ class Solution:
                     prime[j] = 0
         return prime
 
+    def prefix_sum_prime(self, n):
+        prime = self.get_sieve(n)
+        cnt = 0
+        for i in range(0, n+1):
+            cnt += prime[i]
+            prime[i] = cnt
+        return prime
+
     def countPrimes_optimal(self, n: int) -> int:
         cnt = 0
         prime = self.get_sieve(n)
@@ -53,6 +61,10 @@ class Solution:
             if (prime[i]):
                 cnt += 1
         return cnt
+
+    def countPrimes_optimal_2(self, n: int) -> int:
+        prime = self.prefix_sum_prime(n)
+        return prime[n-1]
 
 
 print(Solution().countPrimes_brute(10))
@@ -62,3 +74,7 @@ print(Solution().countPrimes_optimal(10))
 print(Solution().countPrimes_optimal(0))
 print(Solution().countPrimes_optimal(1))
 print(Solution().countPrimes_optimal(999983))
+print(Solution().countPrimes_optimal_2(10))
+print(Solution().countPrimes_optimal_2(0))
+print(Solution().countPrimes_optimal_2(1))
+print(Solution().countPrimes_optimal_2(999983))
