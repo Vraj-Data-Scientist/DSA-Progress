@@ -13,6 +13,7 @@ class Solution:
 
 print(Solution().largestOddNumber("4232"))
 print(Solution().largestOddNumber("222"))
+print(Solution().largestOddNumber("0000022232"))
 
 
 
