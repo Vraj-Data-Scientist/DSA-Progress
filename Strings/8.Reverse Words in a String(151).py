@@ -38,7 +38,21 @@ class Solution:
             right -= 1
         return " ".join(words)
 
-
+    def reverseWords_brute_2(self, s: str) -> str:
+        n = len(s)
+        s = s[::-1]
+        ans = ''
+        i = 0
+        while (i < n):
+            word = ''
+            while (i < n and s[i] != " "):
+                word += s[i]
+                i += 1
+            word = word[::-1]
+            if (len(word) > 0):
+                ans += " " + word
+            i += 1    #skip space
+        return ans[1:]
 
 print(Solution().my_split("the sky is blue"))
 print(Solution().my_split("  hello world  "))
@@ -49,4 +63,6 @@ print(Solution().reverseWords_brute("a good   example"))
 print(Solution().reverseWords_better("the sky is blue"))
 print(Solution().reverseWords_better("  hello world  "))
 print(Solution().reverseWords_better("a good   example"))
-
+print(Solution().reverseWords_brute_2("the sky is blue"))
+print(Solution().reverseWords_brute_2("  hello world  "))
+print(Solution().reverseWords_brute_2("a good   example"))
