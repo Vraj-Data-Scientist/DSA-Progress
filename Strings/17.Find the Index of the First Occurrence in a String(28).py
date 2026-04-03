@@ -52,9 +52,35 @@ class Solution:
                     j = lps[j-1]
         return result
 
+    def rabin_karp(self, source, target):
+        base = 10**6
+        target_hash = 0
+        result = []
+        n = len(source)
+        m = len(target)
+        for char in target:
+            target_hash = ((target_hash * 31) + ord(char)) % base
+        source_hash = 0
+        power = 1
+        for i in range(0, m):
+            power = power * 31
+        for i in range(0, len(source)):
+            source_hash = ((source_hash * 31) + ord(source[i])) % base
+            if i < m-1:
+                continue
+            if i >= m:
+                source_hash = (source_hash - (ord(source[i-m])*power)) % base
+            if source_hash < 0:
+                source_hash += base
+            if source_hash == target_hash:
+                if (source[i-m+1:i+1] == target):
+                    result.append(i-m+1)
+        return result
+
 
 
 print(Solution().strStr("sadbutsad", "sad"))
 print(Solution().strStr("leetcode", "leeto"))
 print(Solution().kmp("sadbutsad", "sad"))
 print(Solution().kmp("leetcode", "leeto"))
+print(Solution().rabin_karp("sadbutsad", "sad"))
