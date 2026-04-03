@@ -77,6 +77,32 @@ class Solution:
                     result.append(i-m+1)
         return result
 
+    def compute_z(self, s):
+        n = len(s)
+        z = [0] * n
+        l = 0
+        r = 0
+        for i in range(1, n):
+            if (i <= r):
+                z[i] = min(r-i+1, z[i-l])
+            while (i+z[i] < n and s[z[i]] == s[i+z[i]]):
+                z[i] += 1
+            if (i+z[i]-1 > r):
+                l = i
+                r = i+z[i]-1
+        return z
+
+    def z_function(self, haystack, needle):
+        s = needle + "$" + haystack
+        z = self.compute_z(s)
+        result = []
+        m = len(needle)
+        for i in range(m+1, len(z)):
+            if (z[i] == m):
+                result.append(i-m-1)
+        return result
+
+
 
 
 print(Solution().strStr("sadbutsad", "sad"))
@@ -84,3 +110,5 @@ print(Solution().strStr("leetcode", "leeto"))
 print(Solution().kmp("sadbutsad", "sad"))
 print(Solution().kmp("leetcode", "leeto"))
 print(Solution().rabin_karp("sadbutsad", "sad"))
+print(Solution().z_function("sadbutsad", "sad"))
+print(Solution().z_function("leetcode", "leeto"))
